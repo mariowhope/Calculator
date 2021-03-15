@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
         // warning toast :: invalid input
         if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
+            // reset result view string to default value
+            textViewResult.setText(getResources().getString(R.string.calc_result));
         }else {
             Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
             Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
@@ -46,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
             Double result = numA + numB;
             // concat result
             textViewResult.setText(textViewResult.getText() + result.toString());
-            // additionally I've placed the result on editTextFirstNumber.
-            // editTextFirstNumber.setText(result.toString());
         }
     }
     // Operator Minus (-)
@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
         // warning toast :: invalid input
         if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
+            // reset result view string to default value
+            textViewResult.setText(getResources().getString(R.string.calc_result));
         }else {
             Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
             Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
@@ -65,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
             Double result = numA - numB;
             // concat result
             textViewResult.setText(textViewResult.getText() + result.toString());
-            // additionally I've placed the result on editTextFirstNumber.
-            // editTextFirstNumber.setText(result.toString());
         }
     }
     // Operator Multiply (*)
@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
         // warning toast :: invalid input
         if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
+            // reset result view string to default value
+            textViewResult.setText(getResources().getString(R.string.calc_result));
         }else {
             Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
             Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
@@ -84,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
             Double result = numA * numB;
             // concat result
             textViewResult.setText(textViewResult.getText() + result.toString());
-            // Additionally I've placed the result on editTextFirstNumber.
-            // editTextFirstNumber.setText(result.toString());
         }
     }
     // Operator Divide (/)
@@ -95,22 +95,21 @@ public class MainActivity extends AppCompatActivity {
         // warning toast :: Divide by Zero
         if (editTextSecondNumber.getText().toString().equals("0")) {
             Toast.makeText(MainActivity.this,getResources().getString(R.string.zero_division),Toast.LENGTH_LONG).show();
+            // reset result view string to default value
+            textViewResult.setText(getResources().getString(R.string.calc_result));
         // warning toast :: Invalid Input
         }else if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
+            // reset result view string to default value
+            textViewResult.setText(getResources().getString(R.string.calc_result));
         }else {
             Double num = Double.parseDouble(editTextFirstNumber.getText().toString());
             Double den = Double.parseDouble(editTextSecondNumber.getText().toString());
             // reset result view string to default value
             textViewResult.setText(getResources().getString(R.string.calc_result));
             Double result = num / den;
-            // remove the decimal character if it is not relevant
-            //TODO:if(result % 1 == 0) {
-
             // concat result
             textViewResult.setText(textViewResult.getText() + result.toString());
-            // Additionally I've placed the result on editTextFirstNumber.
-            // editTextFirstNumber.setText(result.toString());
         }
     }
 }

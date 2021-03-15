@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText(getResources().getString(R.string.calc_result));
             Double result = numA + numB;
             // concat result
-            textViewResult.setText(textViewResult.getText() + result.toString());
+            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
         }
     }
     // Operator Minus (-)
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText(getResources().getString(R.string.calc_result));
             Double result = numA - numB;
             // concat result
-            textViewResult.setText(textViewResult.getText() + result.toString());
+            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
         }
     }
     // Operator Multiply (*)
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText(getResources().getString(R.string.calc_result));
             Double result = numA * numB;
             // concat result
-            textViewResult.setText(textViewResult.getText() + result.toString());
+            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
         }
     }
     // Operator Divide (/)
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             textViewResult.setText(getResources().getString(R.string.calc_result));
             Double result = num / den;
             // concat result
-            textViewResult.setText(textViewResult.getText() + result.toString());
+            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
         }
     }
 }

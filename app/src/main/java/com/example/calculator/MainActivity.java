@@ -1,6 +1,7 @@
 package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         textViewResult = findViewById(R.id.textViewResult);
     }
     // Operator Plus (+)
+    @SuppressLint("SetTextI18n")
     public void buttonPlusClicked (View view){
         // hide keyboard after onClick event
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     // Operator Minus (-)
+    @SuppressLint("SetTextI18n")
     public void buttonMinusClicked (View view){
         // hide keyboard after onClick event
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     // Operator Multiply (*)
+    @SuppressLint("SetTextI18n")
     public void buttonMultiplyClicked (View view){
         // hide keyboard after onClick event
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     // Operator Divide (/)
+    @SuppressLint("SetTextI18n")
     public void buttonDivideClicked (View view){
         // hide keyboard after onClick event
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);

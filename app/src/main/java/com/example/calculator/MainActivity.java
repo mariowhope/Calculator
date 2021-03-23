@@ -32,88 +32,43 @@ public class MainActivity extends AppCompatActivity {
         editTextSecondNumber = findViewById(R.id.editTextSecondNumber);
         textViewResult = findViewById(R.id.textViewResult);
     }
-    // Operator Plus (+)
-    @SuppressLint("SetTextI18n")
-    public void buttonPlusClicked (View view){
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
+    public void operationClicked (View view){
         // hide keyboard after onClick event
         editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
         // warning toast :: invalid input
         if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
             Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
         }else {
-            Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
-            Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
+            double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
+            double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
+            double result = 0;
             // reset result view string to default value
             textViewResult.setText(getResources().getString(R.string.calc_result));
-            Double result = numA + numB;
-            // concat result
-            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
-        }
-    }
-    // Operator Minus (-)
-    @SuppressLint("SetTextI18n")
-    public void buttonMinusClicked (View view){
-        // hide keyboard after onClick event
-        editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
-        // warning toast :: invalid input
-        if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-        }else {
-            Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
-            Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-            Double result = numA - numB;
-            // concat result
-            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
-        }
-    }
-    // Operator Multiply (*)
-    @SuppressLint("SetTextI18n")
-    public void buttonMultiplyClicked (View view){
-        // hide keyboard after onClick event
-        editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
-        // warning toast :: invalid input
-        if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-        }else {
-            Double numA = Double.parseDouble(editTextFirstNumber.getText().toString());
-            Double numB = Double.parseDouble(editTextSecondNumber.getText().toString());
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-            Double result = numA * numB;
-            // concat result
-            textViewResult.setText(textViewResult.getText() + String.valueOf(result));
-        }
-    }
-    // Operator Divide (/)
-    @SuppressLint("SetTextI18n")
-    public void buttonDivideClicked (View view){
-        // hide keyboard after onClick event
-        editTextSecondNumber.onEditorAction(EditorInfo.IME_ACTION_DONE);
-        // warning toast :: Divide by Zero
-        if (editTextSecondNumber.getText().toString().equals("0")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.zero_division),Toast.LENGTH_LONG).show();
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-        // warning toast :: Invalid Input
-        }else if(editTextFirstNumber.getText().toString().equals("") || editTextSecondNumber.getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this,getResources().getString(R.string.editText_isNaN),Toast.LENGTH_SHORT).show();
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-        }else {
-            Double num = Double.parseDouble(editTextFirstNumber.getText().toString());
-            Double den = Double.parseDouble(editTextSecondNumber.getText().toString());
-            // reset result view string to default value
-            textViewResult.setText(getResources().getString(R.string.calc_result));
-            Double result = num / den;
-            // concat result
+            switch (view.getId()) {
+                // Operator Plus (+)
+                case R.id.buttonPlus:
+                    result = numA + numB;
+                    break;
+                // Operator Minus (-)
+                case R.id.buttonMinus:
+                    result = numA - numB;
+                    break;
+                // Operator Multiply (*)
+                case R.id.buttonMultiply:
+                    result = numA * numB;
+                    break;
+                // Operator Divide (/)
+                case R.id.buttonDivide:
+                    if (editTextSecondNumber.getText().toString().equals("0")) {
+                        Toast.makeText(MainActivity.this,
+                                getResources().getString(R.string.zero_division),
+                                Toast.LENGTH_LONG).show();
+                    }else {
+                        result = numA / numB;
+                    }
+                    break;
+            }
             textViewResult.setText(textViewResult.getText() + String.valueOf(result));
         }
     }
